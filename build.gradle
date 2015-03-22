@@ -2,17 +2,18 @@ apply plugin: 'java'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 
 group = 'br.com.project'
 version = '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 eclipse {
 	wtp {
 		facet {
-			facet name: 'java', version: '1.6'
+			facet name: 'java', version: '1.7'
 			facet name: 'jst.web', version: '3.0'
 		}
 	}
@@ -46,4 +47,6 @@ dependencies {
 	
 	compile "commons-dbcp:commons-dbcp:1.4"
 	compile "cglib:cglib:2.2.2"
+
+	compile "org.apache.tiles:tiles-api:3.0.5"
 }
