@@ -16,6 +16,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
+import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -40,12 +41,13 @@ public class ConfigDatabase {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-		vendorAdapter.setGenerateDdl(Boolean.TRUE);
-		vendorAdapter.setShowSql(Boolean.TRUE);
-		factory.setDataSource(dataSource());
-		factory.setJpaVendorAdapter(vendorAdapter);
+
 		factory.setPackagesToScan("br.com.project.model");
+		factory.setDataSource(dataSource());
+		factory.setJpaVendorAdapter(jpaVendorAdapter());
+		factory.setJpaDialect(hibernateJpaDialect());
+
+
 		Properties jpaProperties = new Properties();
 		jpaProperties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
 		factory.setJpaProperties(jpaProperties);
@@ -53,20 +55,25 @@ public class ConfigDatabase {
 		factory.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
 		return factory;
     }
+
+	@Bean
+	public HibernateJpaDialect hibernateJpaDialect(){
+		return new HibernateJpaDialect();
+	}
     
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-        hibernateJpaVendorAdapter.setShowSql(false);
+        hibernateJpaVendorAdapter.setShowSql(Boolean.parseBoolean(env.getProperty("hibernate.show_sql")));
         hibernateJpaVendorAdapter.setGenerateDdl(true);
         hibernateJpaVendorAdapter.setDatabase(Database.MYSQL);
-        hibernateJpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
+        hibernateJpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQL5InnoDBDialect");
         return hibernateJpaVendorAdapter;
     }
 
     @Bean
     public PlatformTransactionManager transactionManager() {
-        return new JpaTransactionManager();
-    }	
+		return new JpaTransactionManager();
+	}
 	
 }

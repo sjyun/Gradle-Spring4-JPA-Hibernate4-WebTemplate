@@ -3,6 +3,18 @@ apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+apply plugin: 'jetty'
+
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath "com.bmuschko:gradle-tomcat-plugin:2.1"
+	}
+}
+
+apply plugin: "com.bmuschko.tomcat"
 
 group = 'br.com.project'
 version = '1.0-SNAPSHOT'
@@ -33,6 +45,11 @@ ext {
 }
 
 dependencies {
+	def tomcatVersion = '7.0.59'
+	tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+			"org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+			"org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+
     providedCompile "javax.servlet:javax.servlet-api:3.1.0"
     runtime "javax.servlet:jstl:1.2"
 	
@@ -44,7 +61,8 @@ dependencies {
 	compile "org.hibernate:hibernate-core:4.3.7.Final"
 	compile "org.hibernate:hibernate-entitymanager:4.3.7.Final"
 	compile "org.hibernate:hibernate-validator:5.0.1.Final"
-	
+	compile 'mysql:mysql-connector-java:5.1.34'
+
 	compile "commons-dbcp:commons-dbcp:1.4"
 	compile "cglib:cglib:2.2.2"
 
