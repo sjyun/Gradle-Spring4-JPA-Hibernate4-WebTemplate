@@ -19,8 +19,7 @@ public class UserController {
     	ModelAndView model = new ModelAndView("user-list");
     	
     	model.addObject( "users", userRepository.findAll() ); 
-    	model.addObject( "user-instance", new User() );
-    	return model;    	
+    	return model;
     }
     
     @RequestMapping("/user/insert" )
