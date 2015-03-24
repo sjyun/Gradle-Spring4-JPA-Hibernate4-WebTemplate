@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +12,7 @@
     <title>Carousel Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -208,7 +207,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="../../assets/js/vendor/holder.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
