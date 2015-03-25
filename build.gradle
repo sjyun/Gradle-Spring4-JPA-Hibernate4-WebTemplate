@@ -17,7 +17,7 @@ buildscript {
 apply plugin: "com.bmuschko.tomcat"
 
 group = 'br.com.project'
-version = '1.0-SNAPSHOT'
+//version = '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
