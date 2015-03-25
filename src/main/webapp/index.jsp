@@ -8,7 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="favicon.ico">
 
     <title>Carousel Template for Bootstrap</title>
 
@@ -26,7 +26,7 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
+    <link href="styles/carousel.css" rel="stylesheet">
   </head>
 <!-- NAVBAR
 ================================================== -->

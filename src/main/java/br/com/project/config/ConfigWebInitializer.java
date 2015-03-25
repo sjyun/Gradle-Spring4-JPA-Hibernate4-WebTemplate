@@ -16,9 +16,9 @@ public class ConfigWebInitializer implements WebApplicationInitializer {
         ctx.register(ConfigMVC.class);  
         ctx.setServletContext(servletContext);    
         
-        Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));  
-        servlet.addMapping("/");  
-        servlet.setLoadOnStartup(1);  
+//        Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));
+//        servlet.addMapping("/");
+//        servlet.setLoadOnStartup(1);
           
     }  
 
